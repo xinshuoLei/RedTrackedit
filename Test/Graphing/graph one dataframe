@@ -1,0 +1,23 @@
+from pandasTest import *
+import pandas_bokeh
+#pandas_bokeh.output_notebook()
+
+#dataFrame.plot_bokeh(kind = "bar")
+
+
+p_bar1 = dataFrame.plot_bokeh(
+    kind = "bar",
+    ylabel = "abcd value",
+    title = "test",
+    alpha = 0.6,
+    legend = "bottom_left")
+'''
+p_bar2 = dataFrame4.plot_bokeh(
+    kind = "bar",
+    ylabel = "value",
+    title = "test1",
+    alpha = 0.6,
+    legend = "bottom_left")
+
+pandas_bokeh.plot_grid([[p_bar1, p_bar2]], plot_width = 800)
+'''
