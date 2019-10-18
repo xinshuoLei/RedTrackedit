@@ -1,0 +1,28 @@
+from CSVtoSortedDataFrame import *
+import pandas_bokeh
+import pandas
+
+
+dataFrame = importCSV('politics_top500.csv')
+dataFrame.score = pandas.to_numeric(dataFrame.score)
+dataFrame.comms_num = pandas.to_numeric(dataFrame.comms_num)
+#dataFrame.created = pandas.to_numeric(dataFrame.created)
+
+p_line = dataFrame.plot_bokeh(
+    kind = "line",
+    title = "test",
+    alpha = 0.6,
+    figsize = (1000,800),
+    show_figure = False,
+    legend = "top_right")
+
+p_line.xaxis.visible = False
+
+p_scatter = dataFrame.plot_bokeh.scatter(
+    x = "comms_num",
+    y = "score",
+    figsize = (1000,800),
+    show_figure = False)
+
+
+pandas_bokeh.plot_grid([[p_line, p_scatter]], plot_width = 800)
