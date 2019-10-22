@@ -14,6 +14,8 @@ def importCSV(dataPath):
 	for i in range(1,len(data)):
 		lastData.append(data[i])
 	dataFrame = pandas.DataFrame(lastData, columns=data[0])
+	dataFrame.score = pandas.to_numeric(dataFrame.score)
+	dataFrame.comms_num = pandas.to_numeric(dataFrame.comms_num)
 	return dataFrame
 
 def sortDataFrame(dataFrame):
