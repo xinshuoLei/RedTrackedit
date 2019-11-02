@@ -25,4 +25,10 @@ def sortDataFrame(dataFrame):
 def getPandasDataFrame(dataPath):
 	return sortDataFrame(importCSV(dataPath))
 
-print(getPandasDataFrame('politics_top500.csv'))
+def getStatistics(dataFrame):
+	return dataFrame.describe();
+
+def getCorrelation(dataFrame):
+	return dataFrame.corr()
+
+print(getCorrelation(getPandasDataFrame('politics_top500.csv')))
