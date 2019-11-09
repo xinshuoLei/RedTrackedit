@@ -1,0 +1,17 @@
+import tkinter
+from tkinter import messagebox
+top = tkinter.Tk()
+def information():
+ messagebox.showinfo("Hello, python", "Hello, World") //前一个是title，后一个是button里的内容
+B = tkinter.Button(top, text = "hit me", command = information)
+C = tkinter.Button(top, text="Quit", command = top.quit) //退出消息循环的按钮
+B.pack() 
+C.pack()
+
+//text: 按钮的文本内容
+//command: 按钮关联的函数，当按钮被点击时，执行该函数
+
+longtext = "upvotes: 1000\ncomments:1000\nrank:10"
+def information():
+ messagebox.showinfo("Hello, python", longtext) 
+B = tkinter.Button(top, text = "hit me", command = information)
