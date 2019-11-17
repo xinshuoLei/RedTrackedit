@@ -1,0 +1,10 @@
+>>> import tkinter as tk
+>>> from PIL import Image
+>>> window = tk.Tk()
+>>> window.title('My Window')
+>>> window.geometry('500x300'）
+>>> canvas = tk.Canvas(window, bg='green', height=200, width=500)
+>>> image_file = tk.PhotoImage(file='C:\\Users\\李其铿\\AppData\\Local\\Programs\\Python\\Python37-32\\Lib\\site-packages\\PIL\\lbj.gif')
+>>> image = canvas.create_image(250, 0, anchor='n',image=image_file)
+>>> canvas.pack()
+>>> window.mainloop()
