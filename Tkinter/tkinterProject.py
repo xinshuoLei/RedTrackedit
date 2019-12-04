@@ -1,4 +1,5 @@
 import tkinter as tk
+from PIL import Image
 
 HEIGHT = 500
 WIDTH = 600
@@ -11,9 +12,10 @@ root = tk.Tk()
 canvas = tk.Canvas(root, height=HEIGHT, width=WIDTH)
 canvas.pack()
 
-#background = tk.PhotoImage(file = '/Users/albert/Documents/reddit-wallpaper-full-hd-1080p-83752.jpg')
-#backgroun_label = tk.Label(root, image = background)
-#background_label.place(relwidth = 1, relheight = 1)
+#insert own path to background image
+background = tk.PhotoImage(file = '/Users/albert/Documents/reddit-wide.jpg')
+background_label = tk.Label(root, image = background)
+background_label.place(x = 0, y = 0, relwidth = 1, relheight = 1)
 
 frame = tk.Frame(root, bg='#DA826F', bd = 5)
 frame.place(relx=0.5, rely=0.1, relwidth=0.75, relheight=0.1, anchor = 'n')
@@ -30,6 +32,5 @@ lower_frame.place(relx=0.5, rely=0.25, relwidth=0.75, relheight=0.6, anchor = 'n
 
 label = tk.Label(lower_frame)
 label.place(relwidth = 1, relheight = 1)
-
 
 root.mainloop()
