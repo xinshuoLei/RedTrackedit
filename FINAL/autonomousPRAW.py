@@ -1,0 +1,63 @@
+#! python3
+import praw
+import pandas as pd
+import datetime as dt
+import numpy as np
+from IPython.display import display
+
+from fileToGraph import *
+
+def redditToCSV(userInput):
+
+    reddit = praw.Reddit(client_id = 'nmBnxMl2ZLfNYQ',
+                         client_secret = '5NqvZTr3Ebtb3yOwYmQ7veHySYk',
+                         username='PranavY2k',
+                         password='Vivek123',
+                         user_agent='prawtutorial1v1')
+
+    subreddit = reddit.subreddit(userInput)
+
+    hot_subreddit = subreddit.hot(limit = 1000)
+
+    topics_dict = { "title":[], \
+                  "score":[], \
+                  "id":[], "url":[], \
+                  "comms_num": [], \
+                  "created": [], \
+                  "body":[], \
+                  "upvotes":[]}
+    def get_date(created):
+        return dt.datetime.fromtimestamp(created)
+
+
+    for submission in hot_subreddit:
+        topics_dict["title"].append(submission.title)
+        topics_dict["score"].append(submission.score)
+        topics_dict["id"].append(submission.id)
+        topics_dict["url"].append(submission.url)
+        topics_dict["comms_num"].append(submission.num_comments)
+        topics_dict["created"].append(submission.created)
+        topics_dict["body"].append(submission.selftext)
+        topics_dict["upvotes"].append(submission.ups)
+
+
+    #These allow the topics_data to have proper time instead of the military time.    
+    #_timestamp = topics_data["created"].apply(get_date)
+    #topics_data = topics_data.assign(timestamp = _timestamp)
+
+    topics_data = pd.DataFrame(topics_dict)
+
+    display(topics_data)
+    
+    topics_data.to_csv('PNAV.csv', index=False)
+    
+    
+
+    return scatter("PNAV.csv")
+if __name__ == "__main__":
+    while True:    
+        try:
+            redditToCSV(input("Enter the subreddit: "))
+            break
+        except Exception:
+            print('Sorry, this is not a real subreddit. Try again')
