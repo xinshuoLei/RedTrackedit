@@ -1,0 +1,12 @@
+import os
+from CSVtoSortedDataframe import *
+from test import *
+import pandas_bokeh
+
+def scatter(toGraph):
+    for root, dirs, files in os.walk(".", topdown=False):
+       for filename in files:
+           if filename == toGraph:
+               dataFrame = getPandasDataFrame(filename)
+               plot_scatter(dataFrame,filename)
+scatter()
